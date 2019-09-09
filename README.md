@@ -26,7 +26,7 @@ $ cd sims
 # Install dependencies (skip it in case you plan run on docker)
 $ npm i
 ```
-### Config
+## Config
 SIMS is using environment variables for configuration. the easiest way to manage and persist them is using the `.env` file sits on the root project directory
 
 Configuration in the file is splitted to three parts, listed below
