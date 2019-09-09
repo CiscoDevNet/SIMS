@@ -16,7 +16,7 @@ For a quick start you'll don't need to have any network setup or equiqments, we 
     * Machine must have network access to Cisco ISE primary node
     * SIMS is cross platform app but the instructions below written in Unix (or OS x) flavor
 ## Installation
-```
+```bash
 # Clone this repository
 $ git clone https://github.com/CiscoDevNet/ise-social-login-guest-authentication.git
 
@@ -31,12 +31,12 @@ SIMS is using environment variables for configuration. the easiest way to manage
 
 Configuration in the file is splitted to three parts, listed below
 #### Project Settings
-```
+```javascript
 NODE_TLS_REJECT_UNAUTHORIZED=0 // Get access to Cisco ISE with no SSL cert installed
 PORT=<Port we will run our server>
 ```
 #### Cisco ISE Details
-```
+```javascript
 ISE_ADDRESS=<IP Address of our Cisco ISE PAN node>
 ISE_SPONSOR_USER_NAME=<Sponsor user that will create our guest users>
 ISE_SPONSOR_PASSWORD=<Password for the sponsor user>
@@ -48,18 +48,18 @@ Add an instruction to get the portal ID
 SIMS is use by default five social login strategies, you must have value for all of them to run the code (even the value is fake, there is no validation for that)
 
 In case you want use more/less refer to the Add/Remove Login Strategies section below
-```
+```javascript
 LINKEDIN_CLIENT_ID=
-LINKEDIN_SECRET=arInNEqzfCzsfivO
-GITHUB_CLIENT_ID=437971f986dc7e74902a
-GITHUB_SECRET=a1b8ba8352ca803dfb4cd0bf80e45c7fa1628c6c
-GOOGLE_CLIENT_ID=<get it from 
-GOOGLE_CLIENT_SECRET=P9rQvWNOrVM_CTXsZHREMs8Q
-TWITTER_CONSUMER_KEY=2449ZTZZYNa9qhccNRwnoVvdP
-TWITTER_CONSUMER_SECRET=eW7EeEzegPa6djDHkOwTlaHWNKYcssK0Ns7WqNCorG9fLle1rn
-AUTH0_CONSUMER_KEY=ukSOk2kCCFnWlRwIW3FX0NOChuxM20K0
-AUTH0_CONSUMER_SECRET=yBMRzGHpm_1TBFGP-V-cyV_-1mOeItMt8NuFRI1K2ueGGwEoTOVU9Q8AGUVJCgoo
-AUTH0_DOMAIN=dev-nxy2jal1.auth0.com
+LINKEDIN_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+TWITTER_CONSUMER_KEY=
+TWITTER_CONSUMER_SECRET=
+AUTH0_CONSUMER_KEY=
+AUTH0_CONSUMER_SECRET=
+AUTH0_DOMAIN=
 ```
 
 _`.env` file is listed as `.gitignore` file to avoid commiting of sensitive data to source control_
