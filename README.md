@@ -16,10 +16,15 @@ For a quick start you'll don't need to have any network setup or equiqments, we 
     * Machine must have network access to Cisco ISE primary node
     * SIMS is cross platform app but the instructions below written in Unix (or OS x) flavor
 ## Installation
-### Clone
 ```
-git clone https://github.com/CiscoDevNet/ise-social-login-guest-authentication.git
-cd sims
+# Clone this repository
+$ git clone https://github.com/CiscoDevNet/ise-social-login-guest-authentication.git
+
+# Go into the repository
+$ cd sims
+
+# Install dependencies (skip it in case you plan run on docker)
+$ npm i
 ```
 ### Config
 SIMS is using environment variables for configuration. the easiest way to manage and persist them is using the `.env` file sits on the root project directory
@@ -55,11 +60,6 @@ AUTH0_CONSUMER_SECRET=yBMRzGHpm_1TBFGP-V-cyV_-1mOeItMt8NuFRI1K2ueGGwEoTOVU9Q8AGU
 AUTH0_DOMAIN=dev-nxy2jal1.auth0.com
 ```
 _`.env` file is listed as `.gitignore` file to avoid commiting of sensitive data to source control_
-### Install Dependencies
-**_You'll don't need the next command in case you running this project as docker container_**
-```
-npm i
-```
 ## Usage
 ### Run the project
 #### Node.js
