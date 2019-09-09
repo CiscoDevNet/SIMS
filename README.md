@@ -28,6 +28,7 @@ $ npm i
 ```
 ### Config
 SIMS is using environment variables for configuration. the easiest way to manage and persist them is using the `.env` file sits on the root project directory
+
 Configuration in the file is splitted to three parts, listed below
 #### Project Settings
 ```
@@ -45,7 +46,8 @@ Add an instruction on the way to add sponsor-api user
 Add an instruction to get the portal ID
 #### Social Strategies Config
 SIMS is use by default five social login strategies, you must have value for all of them to run the code (even the value is fake, there is no validation for that)
-in case you want use more/less refer to the Add/Remove Login Strategies section below
+
+In case you want use more/less refer to the Add/Remove Login Strategies section below
 ```
 LINKEDIN_CLIENT_ID=
 LINKEDIN_SECRET=arInNEqzfCzsfivO
@@ -59,21 +61,26 @@ AUTH0_CONSUMER_KEY=ukSOk2kCCFnWlRwIW3FX0NOChuxM20K0
 AUTH0_CONSUMER_SECRET=yBMRzGHpm_1TBFGP-V-cyV_-1mOeItMt8NuFRI1K2ueGGwEoTOVU9Q8AGUVJCgoo
 AUTH0_DOMAIN=dev-nxy2jal1.auth0.com
 ```
+
 _`.env` file is listed as `.gitignore` file to avoid commiting of sensitive data to source control_
+
+
 ## Usage
 ### Run the project
 #### Node.js
-There is two options to run the project:
-`npm start`
-For a quick start
-`npm run dev`
-To use nodemon and modify the code in realtime
+From the project directory, Run:
+
+* `npm start` _for a quick up'n'running_
+* `npm run dev` _to use nodemon and modify the code in realtime_
+
 #### Docker
 This project has both `Dockerfile` and `docker-compose.yml` files to allow plain docker and docker-swarm running env
-To use docker run
-`docker build . && docker run`
-To use it as a swarm service just run
-`docker-compose up --build`
+
+
+From the project directory, Run:
+
+* `docker build . && docker run` to build docker image and run it
+* `docker-compose up --build` to use it as a swarm service just run
 ### Use on ISE
 ### Test the flow
 ### Add custom fields
