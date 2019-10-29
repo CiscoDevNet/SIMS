@@ -32,12 +32,12 @@ SIMS is using environment variables for configuration. the easiest way to manage
 Configuration in the file is splitted to three parts, listed below
 #### Project Settings
 ```javascript
-NODE_TLS_REJECT_UNAUTHORIZED=0 #Get access to Cisco ISE with no SSL cert installed
-PORT= #Port we will run our server
+NODE_TLS_REJECT_UNAUTHORIZED=0 # Get access to Cisco ISE with no SSL cert installed
+PORT= //Port we will run our server
 ```
 #### Cisco ISE Details
 ```javascript
-ISE_ADDRESS=<IP Address of our Cisco ISE PAN node>
+ISE_ADDRESS= // IP Address of our Cisco ISE PAN node
 ISE_SPONSOR_USER_NAME=<Sponsor user that will create our guest users>
 ISE_SPONSOR_PASSWORD=<Password for the sponsor user>
 SPONSOR_PORTAL_ID=<Sponsor portal that guest will be part of>
