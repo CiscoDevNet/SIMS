@@ -32,8 +32,8 @@ SIMS is using environment variables for configuration. the easiest way to manage
 Configuration in the file is splitted to three parts, listed below
 #### Project Settings
 ```javascript
-NODE_TLS_REJECT_UNAUTHORIZED=0 // Get access to Cisco ISE with no SSL cert installed
-PORT=<Port we will run our server>
+NODE_TLS_REJECT_UNAUTHORIZED=0 #Get access to Cisco ISE with no SSL cert installed
+PORT= #Port we will run our server
 ```
 #### Cisco ISE Details
 ```javascript
