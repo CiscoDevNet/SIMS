@@ -1,7 +1,7 @@
 # Social Identity Management Service
  SIMS is a very basic project aims to add social login as a method of authentication and authorization to wireless networks managed by Cisco ISE. It's built on top of Node.js/Express and use Passport.js to easily add more than 500 social login strategies
 ## How It Works
-![flow](https://github.com/CiscoDevNet/ise-social-login-guest-authentication/blob/master/sims-flow.png?raw=true "Title")
+![flow](sims-flow.png)
 1. User is click on a button on ISE Guest Login Portal
 2. SIMS is redirect user to the social login screen
 3. User is authorize using social identity
@@ -43,6 +43,7 @@ ISE_ADDRESS=// IP Address of our Cisco ISE PAN node
 ISE_SPONSOR_USER_NAME=// Sponsor user that will create our guest users
 ISE_SPONSOR_PASSWORD=// Password for the sponsor user
 SPONSOR_PORTAL_ID= // Sponsor portal that guest will be part of
+GUEST_USER_LOCATION=// The location where the guest user created
 ```
 Add an instruction on the way to add sponsor-api user
 Add an instruction to get the portal ID
@@ -85,3 +86,6 @@ From the project directory, Run:
 ### Test the flow
 ### Add custom fields
 ### Add/Remove Login Strategies
+### Troubleshooting
+Location isn't fit
+Custom field does not created
