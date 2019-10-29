@@ -32,22 +32,21 @@ SIMS is using environment variables for configuration. the easiest way to manage
 Configuration in the file is splitted to three parts, listed below
 #### Project Settings
 ```javascript
-NODE_TLS_REJECT_UNAUTHORIZED=0 # Get access to Cisco ISE with no SSL cert installed
-PORT= //Port we will run our server
+NODE_TLS_REJECT_UNAUTHORIZED=0 // Get access to Cisco ISE with no SSL cert installed
+HOSTNAME=<Hostname that we will run our server, used for callback redirection>
+PORT=<Port we will run our server>
 ```
 #### Cisco ISE Details
 ```javascript
-ISE_ADDRESS= // IP Address of our Cisco ISE PAN node
-ISE_SPONSOR_USER_NAME=<Sponsor user that will create our guest users>
-ISE_SPONSOR_PASSWORD=<Password for the sponsor user>
-SPONSOR_PORTAL_ID=<Sponsor portal that guest will be part of>
+ISE_ADDRESS=// IP Address of our Cisco ISE PAN node
+ISE_SPONSOR_USER_NAME=// Sponsor user that will create our guest users
+ISE_SPONSOR_PASSWORD=// Password for the sponsor user
+SPONSOR_PORTAL_ID= // Sponsor portal that guest will be part of
 ```
 Add an instruction on the way to add sponsor-api user
 Add an instruction to get the portal ID
 #### Social Strategies Config
-SIMS is use by default five social login strategies, you must have value for all of them to run the code (even the value is fake, there is no validation for that)
-
-In case you want use more/less refer to the Add/Remove Login Strategies section below
+SIMS is use by default five social login strategies. For strategies modifications refer to the Add/Remove Login Strategies section below. Pay attention that missing config property will fail the application
 ```javascript
 LINKEDIN_CLIENT_ID=
 LINKEDIN_SECRET=
