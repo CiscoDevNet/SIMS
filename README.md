@@ -83,12 +83,16 @@ From the project directory, Run:
 * `docker build . && docker run` to build docker image and run it
 * `docker-compose up --build` to use it as a swarm service just run
 ### Use on ISE
-1. Enable ERS for read/write on ISE
-2. Create ERS sponsor user for ISE
-3. Enable ERS access for sponsor group
-4. Get the portal ID
-5. Create location in the same timezone where your app running (no need in case you on PST)
-6. Add the login button to ISE Guest Portal `<button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>`
+#### ISE ERS Setup
+Enable ERS for read/write on ISE
+Create ERS sponsor user for ISE
+Enable ERS access for sponsor group
+#### Get project config variables
+Get the portal ID
+Create location in the same timezone where your app running (no need in case you on PST)
+#### Add the button to ISE
+Add the login button to ISE Guest Portal
+`<button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>`
 ### Test the flow
 1. Go to the ISE Guest Portal page
 2. Click on portal test URL
