@@ -77,9 +77,20 @@ From the project directory, Run:
 * `docker-compose up --build` to use it as a swarm service just run
 ### Use on ISE
 #### ISE ERS Setup
-Enable ERS for read/write on ISE
-Create ERS sponsor user for ISE
-Enable ERS access for sponsor group
+1. Enable ERS for read/write on ISE on the Admin Portal
+    1. Go to: `Administration > System > Settings > ERS Settings`
+    2. Select: `Enable ERS forRead/Write`
+    3. Click: `Save`
+2. Create ERS sponsor user for ISE
+    1. Go to: `Administration > Identities > Users`
+    2. Click: `Add`
+    3. Insert: `Name` (Usually sponsor-api)
+    4. Insert: `Password` (Choosen password)
+    5. Select: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
+    6. Click: `Submit`
+3. Enable ERS access for sponsor group
+    1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
+    2. Check: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
 #### Get project config variables
 Get the portal ID
 Create location in the same timezone where your app running (no need in case you on PST)
