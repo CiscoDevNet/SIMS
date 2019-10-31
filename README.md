@@ -88,9 +88,9 @@ From the project directory, Run:
 *  _Select_: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
 *  _Click_: `Submit`
 ##### Enable ERS access for sponsor group
-*  _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
-*  _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
-*  _Click_: `Save`
+- [ ] _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
+- [ ] _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
+- [ ] _Click_: `Save`
 #### Get project config variables
 ##### Get the portal ID
 *  _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
@@ -120,18 +120,18 @@ From the project directory, Run:
     ```
 
 ### Test the flow
-- [ ]  _Go to_: `Work Centers > Guest Access > Portal & Components > Guest Portals > Self-Registered Guest Portal (default)`
-- [ ]  _Click_: `Portal Test URL`
-- [ ]  _Click_: `Login with GitHub` (or any other method you have)
-- [ ]  _Login_: with your social credetials
-- [ ]  _Authorize_: usage of your ISE social app
-- [ ]  _Wait_: for user creation
-- [ ]  _Click_: `Accept`
-- [ ]  _Navigate_: back to ISE admin portal
-- [ ]  _Go to_: `Work Centers > Guest Access > Manage Accounts`
-- [ ]  _Click_: `Manage Accounts`
-- [ ]  _Click_: `Managed Accounts` tab
-- [ ]  _List_: your social identities as guest user
+*  _Go to_: `Work Centers > Guest Access > Portal & Components > Guest Portals > Self-Registered Guest Portal (default)`
+*  _Click_: `Portal Test URL`
+*  _Click_: `Login with GitHub` (or any other method you have)
+*  _Login_: with your social credetials
+*  _Authorize_: usage of your ISE social app
+*  _Wait_: for user creation
+*  _Click_: `Accept`
+*  _Navigate_: back to ISE admin portal
+*  _Go to_: `Work Centers > Guest Access > Manage Accounts`
+*  _Click_: `Manage Accounts`
+*  _Click_: `Managed Accounts` tab
+*  _List_: your social identities as guest user
 
 ![test](sims-test-instructions.gif)
 ### Add custom fields
