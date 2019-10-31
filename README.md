@@ -78,40 +78,40 @@ From the project directory, Run:
 ### Use on ISE
 #### ISE ERS Setup
 ##### Enable ERS for read/write on ISE on the Admin Portal
-1. Go to: `Administration > System > Settings > ERS Settings`
-2. Select: `Enable ERS forRead/Write`
-3. Click: `Save`
+1. _Go to_: `Administration > System > Settings > ERS Settings`
+2. _Select_: `Enable ERS forRead/Write`
+3. _Click_: `Save`
 ##### Create ERS sponsor user for ISE
-1. Go to: `Administration > Identities > Users`
-2. Click: `Add`
-3. Insert: `Name` (Usually sponsor-api)
-4. Insert: `Password` (Choosen password)
-5. Select: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
-6. Click: `Submit`
+1. _Go to_: `Administration > Identities > Users`
+2. _Click_: `Add`
+3. _Insert_: `Name` (Usually sponsor-api)
+4. _Insert_: `Password` (Choosen password)
+5. _Select_: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
+6. _Click_: `Submit`
 ##### Enable ERS access for sponsor group
-1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
-2. Check: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
-3. Click: `Save`
+1. _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
+2. _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
+3. _Click_: `Save`
 #### Get project config variables
 ##### Get the portal ID
-1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
-2. Click: `Portal test URL`
-3. Copy: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
-4. Paste: `portal` value on `.env` file
+1. _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
+2. _Click_: `Portal test URL`
+3. _Copy_: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
+4. _Paste_: `portal` value on `.env` file
 ##### Create guest location (no need in case your code running on PST)
-1. Go to: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
-2. Insert: `Location name:*` (Free text)
-3. Choose: `Time zone:*`
-4. Click: `Add`
-5. Click: `Save`
-6. Paste: `location name` value on `.env` file
+1. _Go to_: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
+2. _Insert_: `Location name:*` (Free text)
+3. _Choose_: `Time zone:*`
+4. _Click_: `Add`
+5. _Click_: `Save`
+6. _Paste_: `location name` value on `.env` file
 #### Add the button to ISE
-The sample below will just add the five default login methods to the portal, refer to `Add/Remove Login Strategies` section for more info
-1. Go to: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
-2. Click: `Portal Page Customization`
-3. Scroll: `Instructional Text` section
-4. Click: `Toggle HTML Source` (a button with icon looks like `<>` appear on the bottom row of the editor sidebar)
-5. Paste: the code samples below
+> The sample below will add all the five default login methods to the portal, refer to [Add/Remove Login Strategies](#Add/Remove-login-strategies) section for more info
+1. _Go to_: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
+2. _Click_: `Portal Page Customization`
+3. _Scroll_: `Instructional Text` section
+4. _Click_: `Toggle HTML Source` (a button with icon looks like `<>` appear on the bottom row of the editor sidebar)
+5. _Paste_:
     ```html
     <button onclick="window.location.href='http://localhost:3001/auth/google'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Google</button>
     <button onclick="window.location.href='http://localhost:3001/auth/twitter'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Twitter</button>
