@@ -93,24 +93,24 @@ From the project directory, Run:
 *  _Click_: `Save`
 #### Get project config variables
 ##### Get the portal ID
-1. _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
-2. _Click_: `Portal test URL`
-3. _Copy_: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
-4. _Paste_: `portal` value on `.env` file
+*  _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
+*  _Click_: `Portal test URL`
+*  _Copy_: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
+*  _Paste_: `portal` value on `.env` file
 ##### Create guest location (no need in case your code running on PST)
-1. _Go to_: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
-2. _Insert_: `Location name:*` (Free text)
-3. _Choose_: `Time zone:*`
-4. _Click_: `Add`
-5. _Click_: `Save`
-6. _Paste_: `location name` value on `.env` file
+*  _Go to_: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
+*  _Insert_: `Location name:*` (Free text)
+*  _Choose_: `Time zone:*`
+*  _Click_: `Add`
+*  _Click_: `Save`
+*  _Paste_: `location name` value on `.env` file
 #### Add the button to ISE
 > The sample below will add all the five default login methods to the portal, refer to [Add/Remove Login Strategies](#addremove-login-strategies) section for more info
-1. _Go to_: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
-2. _Click_: `Portal Page Customization`
-3. _Scroll_: `Instructional Text` section
-4. _Click_: `Toggle HTML Source` (a button with icon looks like `<>` appear on the bottom row of the editor sidebar)
-5. _Paste_:
+*  _Go to_: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
+*  _Click_: `Portal Page Customization`
+*  _Scroll_: `Instructional Text` section
+*  _Click_: `Toggle HTML Source` (a button with icon looks like `<>` appear on the bottom row of the editor sidebar)
+*  _Paste_:
     ```html
     <button onclick="window.location.href='http://localhost:3001/auth/google'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Google</button>
     <button onclick="window.location.href='http://localhost:3001/auth/twitter'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Twitter</button>
@@ -120,18 +120,18 @@ From the project directory, Run:
     ```
 
 ### Test the flow
-1. _Go to_: `Work Centers > Guest Access > Portal & Components > Guest Portals > Self-Registered Guest Portal (default)`
-2. _Click_: `Portal Test URL`
-3. _Click_: `Login with GitHub` (or any other method you have)
-4. _Login_: with your social credetials
-5. _Authorize_: usage of your ISE social app
-6. _Wait_: for user creation
-7. _Click_: `Accept`
-8. _Navigate_: back to ISE admin portal
-9. _Go to_: `Work Centers > Guest Access > Manage Accounts`
-10. _Click_: `Manage Accounts`
-11. _Click_: `Managed Accounts` tab
-12. _List_: your social identities as guest user
+*  _Go to_: `Work Centers > Guest Access > Portal & Components > Guest Portals > Self-Registered Guest Portal (default)`
+*  _Click_: `Portal Test URL`
+*  _Click_: `Login with GitHub` (or any other method you have)
+*  _Login_: with your social credetials
+*  _Authorize_: usage of your ISE social app
+*  _Wait_: for user creation
+*  _Click_: `Accept`
+*  _Navigate_: back to ISE admin portal
+*  _Go to_: `Work Centers > Guest Access > Manage Accounts`
+*  _Click_: `Manage Accounts`
+*  _Click_: `Managed Accounts` tab
+*  _List_: your social identities as guest user
 
 ![test](sims-test-instructions.gif)
 ### Add custom fields
