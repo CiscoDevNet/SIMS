@@ -78,32 +78,33 @@ From the project directory, Run:
 ### Use on ISE
 #### ISE ERS Setup
 ##### Enable ERS for read/write on ISE on the Admin Portal
-    1. Go to: `Administration > System > Settings > ERS Settings`
-    2. Select: `Enable ERS forRead/Write`
-    3. Click: `Save`
+1. Go to: `Administration > System > Settings > ERS Settings`
+2. Select: `Enable ERS forRead/Write`
+3. Click: `Save`
 ##### Create ERS sponsor user for ISE
-    1. Go to: `Administration > Identities > Users`
-    2. Click: `Add`
-    3. Insert: `Name` (Usually sponsor-api)
-    4. Insert: `Password` (Choosen password)
-    5. Select: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
-    6. Click: `Submit`
+1. Go to: `Administration > Identities > Users`
+2. Click: `Add`
+3. Insert: `Name` (Usually sponsor-api)
+4. Insert: `Password` (Choosen password)
+5. Select: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
+6. Click: `Submit`
 ##### Enable ERS access for sponsor group
-    1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
-    2. Check: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
-    3. Click: `Save`
+1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
+2. Check: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
+3. Click: `Save`
 #### Get project config variables
 ##### Get the portal ID
-    1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
-    2. Click: `Portal test URL`
-    3. Copy: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
+1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
+2. Click: `Portal test URL`
+3. Copy: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
 ##### Create guest location
 _no need in case your code running on PST_
-    1. Go to: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
-    2. Insert: `Location name:*` (Free text)
-    3. Choose: `Time zone:*`
-    4. Click: `Add`
-    5. Click: `Save`
+
+1. Go to: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
+2. Insert: `Location name:*` (Free text)
+3. Choose: `Time zone:*`
+4. Click: `Add`
+5. Click: `Save`
 #### Add the button to ISE
 Add the login button to ISE Guest Portal
 `<button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>`
