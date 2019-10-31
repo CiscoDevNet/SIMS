@@ -120,18 +120,18 @@ From the project directory, Run:
     ```
 
 ### Test the flow
-*  _Go to_: `Work Centers > Guest Access > Portal & Components > Guest Portals > Self-Registered Guest Portal (default)`
-*  _Click_: `Portal Test URL`
-*  _Click_: `Login with GitHub` (or any other method you have)
-*  _Login_: with your social credetials
-*  _Authorize_: usage of your ISE social app
-*  _Wait_: for user creation
-*  _Click_: `Accept`
-*  _Navigate_: back to ISE admin portal
-*  _Go to_: `Work Centers > Guest Access > Manage Accounts`
-*  _Click_: `Manage Accounts`
-*  _Click_: `Managed Accounts` tab
-*  _List_: your social identities as guest user
+- [ ]  _Go to_: `Work Centers > Guest Access > Portal & Components > Guest Portals > Self-Registered Guest Portal (default)`
+- [ ]  _Click_: `Portal Test URL`
+- [ ]  _Click_: `Login with GitHub` (or any other method you have)
+- [ ]  _Login_: with your social credetials
+- [ ]  _Authorize_: usage of your ISE social app
+- [ ]  _Wait_: for user creation
+- [ ]  _Click_: `Accept`
+- [ ]  _Navigate_: back to ISE admin portal
+- [ ]  _Go to_: `Work Centers > Guest Access > Manage Accounts`
+- [ ]  _Click_: `Manage Accounts`
+- [ ]  _Click_: `Managed Accounts` tab
+- [ ]  _List_: your social identities as guest user
 
 ![test](sims-test-instructions.gif)
 ### Add custom fields
