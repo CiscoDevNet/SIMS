@@ -41,7 +41,7 @@ GUEST_USER_LOCATION=// The location where the guest user created
 Add an instruction on the way to add sponsor-api user
 Add an instruction to get the portal ID
 #### Social Strategies Config
-SIMS is use by default five social login strategies. For strategies modifications refer to the Add/Remove Login Strategies section below. Pay attention that missing config property will fail the application
+SIMS is use by default five social login strategies. For strategies modifications refer to [Add/Remove Login Strategies](#addremove-login-strategies) section below. Pay attention that missing config property will fail the application
 ```javascript
 LINKEDIN_CLIENT_ID=
 LINKEDIN_SECRET=
@@ -106,7 +106,7 @@ From the project directory, Run:
 5. _Click_: `Save`
 6. _Paste_: `location name` value on `.env` file
 #### Add the button to ISE
-> The sample below will add all the five default login methods to the portal, refer to [Add/Remove Login Strategies](#Add/Remove-login-strategies) section for more info
+> The sample below will add all the five default login methods to the portal, refer to [Add/Remove Login Strategies](#addremove-login-strategies) section for more info
 1. _Go to_: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
 2. _Click_: `Portal Page Customization`
 3. _Scroll_: `Instructional Text` section
@@ -119,14 +119,18 @@ From the project directory, Run:
     <button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>
     <button onclick="window.location.href='http://localhost:3001/auth/auth0'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Auth0</button>
     ```
+
 ### Test the flow
 1. Go to the ISE Guest Portal page
 2. Click on portal test URL
 3. Go to the test portal and click the button you add
 4. Login with your social identity credentials
 5. Go to managed accounts page and see the created user
+
 ### Add custom fields
+
 ### Add/Remove Login Strategies
+
 ### Troubleshooting
 Location isn't fit
 Custom field does not created
