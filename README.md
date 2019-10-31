@@ -2,13 +2,6 @@
  SIMS is a very basic project aims to add social login as a method of authentication and authorization to wireless networks managed by Cisco ISE. It's built on top of Node.js/Express and use Passport.js to easily add more than 500 social login strategies
 ## How It Works
 ![flow](sims-flow.png)
-1. User is click on a button on ISE Guest Login Portal
-2. SIMS is redirect user to the social login screen
-3. User is authorize using social identity
-4. Social provider redirect the user back to "please wait" page on SIMS
-6. SIMS is creating/updating guest user on Cisco ISE
-7. SIMS sends post request to Cisco ISE Login Portal with credentials of guest user
-8. User gain access to network from ISE
 ## Prerequisites
 For a quick start you'll don't need to have any network setup or equiqments, we will use the default configuration and test portals. so the must have list include only:
 1. Cisco ISE v2.3+
