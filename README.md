@@ -97,17 +97,28 @@ From the project directory, Run:
 1. Go to: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
 2. Click: `Portal test URL`
 3. Copy: `portal` value from the address bar (should look like `5d6c7720-f612-43df-ad36-ecfb166de8be`)
-##### Create guest location
-_no need in case your code running on PST_
-
+4. Paste: `portal` value on `.env` file
+##### Create guest location (no need in case your code running on PST)
 1. Go to: `Work Centers > Guest Access > Settings > Guest Locations and SSIDs`
 2. Insert: `Location name:*` (Free text)
 3. Choose: `Time zone:*`
 4. Click: `Add`
 5. Click: `Save`
+6. Paste: `location name` value on `.env` file
 #### Add the button to ISE
-Add the login button to ISE Guest Portal
-`<button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>`
+The sample below will just add the five default login methods to the portal, refer to `Add/Remove Login Strategies` section for more info
+1. Go to: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
+2. Click: `Portal Page Customization`
+3. Scroll: `Instructional Text` section
+4. Click: `Toggle HTML Source` (a button with icon looks like `<>` appear on the bottom row of the editor sidebar)
+5. Paste: the code samples below
+    ```html
+    <button onclick="window.location.href='http://localhost:3001/auth/google'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Google</button>
+    <button onclick="window.location.href='http://localhost:3001/auth/twitter'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Twitter</button>
+    <button onclick="window.location.href='http://localhost:3001/auth/linkedin'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with LinkedIn</button>
+    <button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>
+    <button onclick="window.location.href='http://localhost:3001/auth/auth0'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Auth0</button>
+    ```
 ### Test the flow
 1. Go to the ISE Guest Portal page
 2. Click on portal test URL
