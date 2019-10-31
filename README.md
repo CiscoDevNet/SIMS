@@ -77,20 +77,20 @@ From the project directory, Run:
 ### Use on ISE
 #### ISE ERS Setup
 ##### Enable ERS for read/write on ISE on the Admin Portal
-1. _Go to_: `Administration > System > Settings > ERS Settings`
-2. _Select_: `Enable ERS forRead/Write`
-3. _Click_: `Save`
+*  _Go to_: `Administration > System > Settings > ERS Settings`
+*  _Select_: `Enable ERS forRead/Write`
+*  _Click_: `Save`
 ##### Create ERS sponsor user for ISE
-1. _Go to_: `Administration > Identities > Users`
-2. _Click_: `Add`
-3. _Insert_: `Name` (Usually sponsor-api)
-4. _Insert_: `Password` (Choosen password)
-5. _Select_: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
-6. _Click_: `Submit`
+*  _Go to_: `Administration > Identities > Users`
+*  _Click_: `Add`
+*  _Insert_: `Name` (Usually sponsor-api)
+*  _Insert_: `Password` (Choosen password)
+*  _Select_: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
+*  _Click_: `Submit`
 ##### Enable ERS access for sponsor group
-1. _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
-2. _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
-3. _Click_: `Save`
+*  _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
+*  _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
+*  _Click_: `Save`
 #### Get project config variables
 ##### Get the portal ID
 1. _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
