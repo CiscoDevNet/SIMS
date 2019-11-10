@@ -40,7 +40,7 @@ GUEST_USER_LOCATION=// The location where the guest user created
 ```
 
 #### Social Strategies Config
-SIMS is use by default five social login strategies. For strategies modifications refer to [Add/Remove Login Strategies](#addremove-login-strategies) section below. Pay attention that missing config property will fail the application
+SIMS is use by default four social login strategies. For strategies modifications refer to [Add/Remove Login Strategies](#addremove-login-strategies) section below. Pay attention that missing config property will fail the application
 ```javascript
 LINKEDIN_CLIENT_ID=
 LINKEDIN_SECRET=
@@ -50,9 +50,6 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 TWITTER_CONSUMER_KEY=
 TWITTER_CONSUMER_SECRET=
-AUTH0_CONSUMER_KEY=
-AUTH0_CONSUMER_SECRET=
-AUTH0_DOMAIN=
 ```
 
 > `.env` file is listed as `.gitignore` file to avoid commiting of sensitive data to source control
@@ -88,9 +85,9 @@ From the project directory, Run:
 *  _Select_: `ALL_ACCOUNTS (default)` at `User Groups` dropdown
 *  _Click_: `Submit`
 ##### Enable ERS access for sponsor group
-- [ ] _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
-- [ ] _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
-- [ ] _Click_: `Save`
+* _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Groups > ALL_ACCOUNTS (default)`
+* _Check_: `Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)`
+* _Click_: `Save`
 #### Get project config variables
 ##### Get the portal ID
 *  _Go to_: `Work Centers > Guest Access > Portals & Components > Sponsor Portals > Sponsor Portal (default)`
@@ -105,7 +102,7 @@ From the project directory, Run:
 *  _Click_: `Save`
 *  _Paste_: `location name` value on `.env` file
 #### Add the button to ISE
-> The sample below will add all the five default login methods to the portal, refer to [Add/Remove Login Strategies](#addremove-login-strategies) section for more info
+> The sample below will add all the four default login methods to the portal, refer to [Add/Remove Login Strategies](#addremove-login-strategies) section for more info
 *  _Go to_: `Work Centers > Guest Access > Portals & Components > Guest Portals > Self-Registered Guest Portal (default)`
 *  _Click_: `Portal Page Customization`
 *  _Scroll_: `Instructional Text` section
@@ -116,7 +113,6 @@ From the project directory, Run:
     <button onclick="window.location.href='http://localhost:3001/auth/twitter'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Twitter</button>
     <button onclick="window.location.href='http://localhost:3001/auth/linkedin'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with LinkedIn</button>
     <button onclick="window.location.href='http://localhost:3001/auth/github'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Github</button>
-    <button onclick="window.location.href='http://localhost:3001/auth/auth0'+window.location.search+'&iseAddress='+window.location.host+'&token='+document.getElementsByName('token')[0].value">Login with Auth0</button>
     ```
 
 ### Test the flow
@@ -135,9 +131,12 @@ From the project directory, Run:
 
 ![test](sims-test-instructions.gif)
 ### Add custom fields
+One of the advantages of using social network as login method is the extra attributes we can get on our guest users. We can use this attributes to make policy desicion. (e.g. take the account age as proof for account validation, guest age for legal purpose etc.), marketing insights (e.g. push user profile to our CRM), user targeting/profiling and more
+To manage the extra field that will populate we will use the `userSerializer.js` file where we manage the serialization of guest users from various social identities
 
 ### Add/Remove Login Strategies
-
+The current version of SIMS implemented four social login methods, there is no reason why we choose to implement only those, you can use it or not
+To add or remove the 
 ### Troubleshooting
 Location isn't fit
 Custom field does not created
