@@ -1,0 +1,26 @@
+<script>
+  window.onload = () => {
+    document.getElementById('ui_login_signon_button').click();
+  }
+</script>
+<form style="display: none;" id="portalloginForm" name="loginForm"
+  action="https://<%= portalCallbackAddress %>/portal/LoginSubmit.action?from=LOGIN" method="POST"  >
+  <input type="hidden" name="token" value="<%= token %>">
+  <input type="hidden" name="portal" value="<%= portal %>">
+  <input type="text" name="user.username" id="user.username" value="<%= user %>" autocomplete="off" required="" />
+  <input type="password" name="user.password" id="user.password" value="<%= password %>" autocomplete="off"
+    required="" />
+  <input type="submit" data-theme="b" data-inline="true" data-mini="true" id="ui_login_signon_button" value="Sign On"
+    class="ui-btn-hidden" data-disabled="false" />
+</form>
+<div class="container h-100">
+  <div class="row align-items-center h-100">
+    <div class="col-6 mx-auto">
+      <div class="jumbotron text-center">
+        <div class="fa-3x">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

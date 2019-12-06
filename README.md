@@ -1,7 +1,7 @@
 # Social Identity Management Service
  SIMS is a very basic project aims to add social login as a method of authentication and authorization to wireless networks managed by Cisco ISE. It's built on top of Node.js/Express and use Passport.js to easily add more than 500 social login strategies
 ## How It Works
-![flow](sims-flow.png)
+![flow](assets/sims-flow.png)
 ## Prerequisites
 For a quick start you'll don't need to have any network setup or equiqments, we will use the default configuration and test portals. so the must have list include only:
 1. Cisco ISE v2.3+
@@ -129,7 +129,7 @@ From the project directory, Run:
 *  _Click_: `Managed Accounts` tab
 *  _List_: your social identities as guest user
 
-![test](sims-test-instructions.gif)
+![test](assets/sims-test-instructions.gif)
 ### Add custom fields
 One of the advantages of using social network as login method is the extra attributes we can get on our guest users. We can use this attributes to make policy desicion. (e.g. take the account age as proof for account validation, guest age for legal purpose etc.), marketing insights (e.g. push user profile to our CRM), user targeting/profiling and more
 To manage the extra field that will populate we will use the `userSerializer.js` file where we manage the serialization of guest users from various social identities
