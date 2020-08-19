@@ -27,7 +27,7 @@ Configuration in the file is splitted to three parts, listed below
 #### Project Settings
 ```javascript
 NODE_TLS_REJECT_UNAUTHORIZED=0 // Get access to Cisco ISE with no SSL cert installed
-HOSTNAME= // Hostname that we will run our server, used for callback redirection
+CALLBACK_HOSTNAME= // Hostname that we will run our server, used for callback redirection
 PORT= // Port we will run our server
 ```
 #### Cisco ISE Details
@@ -69,8 +69,7 @@ This project has both `Dockerfile` and `docker-compose.yml` files to allow plain
 
 From the project directory, Run:
 
-* `docker build . && docker run` to build docker image and run it
-* `docker-compose up --build` to use it as a swarm service just run
+* `docker run --rm -it -p 3001:3001 $(docker build -q --no-cache .)` to build docker image and run it on port 3001
 ### Use on ISE
 #### ISE ERS Setup
 ##### Enable ERS for read/write on ISE on the Admin Portal

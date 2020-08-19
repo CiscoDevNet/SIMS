@@ -15,34 +15,45 @@ const axiosERSGuestConfig = {
   }
 };
 
-exports.basicGuestUser = (user) => {
-  const {
-    userName,
-    firstName,
-    lastName,
-    email,
-    customFields = {}
-  } = user;
+const credentials = (username, password) => {
+  return {
+    ...{
+      username,
+      password
+    }
+  }
+}
+
+/**
+ *
+ *
+ * @param {*} user
+ * @returns
+ */
+exports.basicGuestUser = (
+  username,
+  firstName,
+  lastName,
+  email,
+  customFields = {}
+) => {
   return {
     ...{
       GuestUser: {
         guestType: 'SocialLogin (default)',
-        name: userName,
+        name: username,
         status: 'ACTIVE',
         guestInfo: {
           ...{
             /**
-             * TODO
-             * Write this comment better
-             * The default config for self-regiested password required
-             * 4 minimum digits, you should change it
-             * in case you changed the password policy
+             * The default config for self-regiested password required 4 digits minimum
+             * It's recommended to change it here and in ISE in case you changed the password policy
              */
-            password: Math.floor(Math.random() * (9999 - 1000))+1000,
+            password: `${Math.floor(Math.random() * (9999 - 1000)) + 1000}`,
             firstName,
             lastName,
             email,
-            userName,
+            userName: username,
             enabled: true,
           }
         },
@@ -59,31 +70,45 @@ exports.basicGuestUser = (user) => {
   };
 }
 
-exports.fetchGuestUser = async (userName) => {
+/**
+ * 
+ *
+ * @param {string} username
+ * @returns {Promise<null|credentials>}
+ * @throws {error}
+ */
+exports.fetchGuestUser = async (username) => {
   let userObj = null;
   try {
-    const getUserRequest = await Axios.get(`https://${process.env['ISE_ADDRESS']}:9060/ers/config/guestuser/name/${userName}`, axiosERSGuestConfig);
+    const getUserRequest = await Axios.get(`https://${process.env['ISE_ADDRESS']}:9060/ers/config/guestuser/name/${username}`, axiosERSGuestConfig);
     userObj = getUserRequest.data;
   } catch (error) {
-    if (error.response && error.response.status !== 404) {
+    if (!error.response || error.response.status !== 404) {
       throw error;
     }
   }
-  return userObj && { user: userObj.GuestUser.guestInfo.userName, password: userObj.GuestUser.guestInfo.password };
+  return userObj && credentials(userObj.GuestUser.guestInfo.userName, userObj.GuestUser.guestInfo.password);
 }
 
+/**
+ *
+ *
+ * @returns {Promise<credentials>}
+ * @throws {error}
+ */
 exports.createGuestUser = async (user) => {
+  const username = user.GuestUser.guestInfo.userName,
+    password = user.GuestUser.guestInfo.password;
   try {
-    const postUserRequest = await Axios.post(`https://${process.env['ISE_ADDRESS']}:9060/ers/config/guestuser`, this.basicGuestUser(user), axiosERSGuestConfig);
-    console.log(postUserRequest.headers);
+    await Axios.post(`https://${process.env['ISE_ADDRESS']}:9060/ers/config/guestuser`, user, axiosERSGuestConfig);
   } catch (error) {
-    if (error.response && error.response.status !== 500) {
-      throw error;
-    } else if(error.response && error.response.status == 500 && error.response.data && error.response.data.ERSResponse && error.response.data.ERSResponse.messages && error.response.data.ERSResponse.messages.length) {
-      // TODO:
-      // Throw error with request 
-      console.error(error.response.data.ERSResponse.messages);
+    let messages = [];
+    if (error.response && error.response.data && error.response.data.ERSResponse && error.response.data.ERSResponse.messages && error.response.data.ERSResponse.messages.length) {
+      messages = error.response.data.ERSResponse.messages.map(m => m.title);
+      
     }
+    console.error(`ERS Call failed. Status: ${error.response.status}. Details ${messages}`);
+    throw error;
   }
-  return { user: userObj.GuestUser.guestInfo.userName, password: userObj.GuestUser.guestInfo.password };
+  return credentials(username, password);
 }

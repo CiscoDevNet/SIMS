@@ -1,41 +1,69 @@
+/**
+ * @module controllers
+ * @author gmanor@cisco.com
+ * 
+ */
 const passport = require('passport');
 const ISEActions = require('./ISEActions');
 const loginMethods = require('./loginMethods');
 
-// TODO
-// Implement redirection mechanism back to portal
-exports.failureRedirection = (req, res) => { res.send('shit') };
+const portalFromRequest = (req) => {
+  const { state } = req.session || req.query;
+  if (!state) {
+    return {};
+  }
+  const portal = { portalID = null, portalCallbackAddress = null, token = null } = JSON.parse(Buffer.from(state, 'base64').toString());
+  return portal;
+};
 
+
+/**
+ *
+ *
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+exports.failureRedirection = (req, res) => {
+  const { portalCallbackAddress, portalID } = portalFromRequest(req);
+  if(!portalCallbackAddress || !portalID) {
+    return res.redirect('/');
+  }
+  res.redirect(`https://${portalCallbackAddress}/portal/PortalSetup.action?portal=${portalID}`);
+};
+
+/**
+ *
+ *
+ * @param {Express.Request]} req
+ * @param {Express.Response} res
+ * @param {Function} next
+ */
 exports.authEndpoint = (req, res, next) => {
   const { portal, iseAddress: portalCallbackAddress, token } = req.query;
   if (!portalCallbackAddress || !portal || !token || !loginMethods.filter((s) => (s.id === req.params.provider)).length) {
     return res.redirect('/failauth');
   }
-  const state = Buffer.from(JSON.stringify({ portal, portalCallbackAddress, token })).toString('base64');
+  const state = Buffer.from(JSON.stringify({ portalID: portal, portalCallbackAddress, token })).toString('base64');
   // Fallback method for oauth1.0 requests (twitter)
   req.session.state = state;
   passport.authenticate(req.params.provider, { state })(req, res, next);
 };
 
 exports.authCallbackEndpoint = async (req, res) => {
-  const { state } = req.session || req.query,
-    { provider } = req.params,
-    { portal, portalCallbackAddress, token } = JSON.parse(Buffer.from(state, 'base64').toString()),
+  const { provider } = req.params,
+    portal = portalFromRequest(req),
     guestUserObj = loginMethods.find(s => s.id === provider).serializeFunction(req.user),
-    guestUserName = guestUserObj.GuestUser.name;
-  console.log('Authetication callback called. provider:', provider, 'token:', token, 'guestUserName:', guestUserName);
+    guestUsername = guestUserObj.GuestUser.name;
   try {
-    let guestUserCredentials = await ISEActions.fetchGuestUser(guestUserName);
-    console.log('After search for existing user: ', guestUserCredentials);
-    if (!guestUserCredentials) {
-      guestUserCredentials = await ISEActions.createGuestUser(guestUserObj);
-      console.log('User not found. Creating user: ', guestUserCredentials);
+    let credentials = await ISEActions.fetchGuestUser(guestUsername);
+    if (!credentials) {
+      credentials = await ISEActions.createGuestUser(guestUserObj);
     }
-    const { user, password } = guestUserCredentials;
-    console.log('Redirect user to login page');
-    res.render('success', { user: req.user._json, provider, portalCallbackAddress, portal, user, password, token, layout: 'layout' });
+    const { username, password } = credentials;
+    res.render('success', { portal, username, password, layout: 'layout' });
   } catch (err) {
-    console.error('callback flow failed:', err, err.response && JSON.stringify(err.response.data.ERSResponse.messages))
+    res.redirect('/failauth');
   }
 }
 

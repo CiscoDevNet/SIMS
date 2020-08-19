@@ -2,7 +2,7 @@ const passport = require('passport');
 
 
 module.exports = (app, strategies) => {
-  const applicationAddress = `${process.env['PROTOCOL']}://${process.env['HOSTNAME']}:${process.env['PORT']}`;
+  const applicationAddress = `${process.env['PROTOCOL']}://${process.env['CALLBACK_HOSTNAME']}:${process.env['PORT']}`;
   strategies.forEach((strategy) => {
     passport.use(new strategy.strategyInstance({
       ...strategy.config,

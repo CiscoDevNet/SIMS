@@ -37,15 +37,7 @@ module.exports = [{
   },
   serializeFunction: (userJson) => {
     const { id, name = {}, photos = [], emails = [] } = userJson;
-    return {
-      firstName: name.givenName || '',
-      lastName: name.familyName || '',
-      emailAddress: emails[0] && emails[0].value || '',
-      userName: `linkedin_${id}`,
-      customFields: {
-        // photo: photos[2] && photos[2].value,
-      }
-    };
+    return basicGuestUser(`linkedin_${id}`, name.givenName || '', name.familyName || '', emails[0] && emails[0].value || '')
   }
 }, {
   id: 'google',

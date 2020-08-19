@@ -1,28 +1,33 @@
 require('dotenv').config();
 
-var express = require('express');
-var partials = require('express-partials')
-var passportConfig = require('./src/passport');
-const routes = require('./src/routes');
-const loginMethods = require('./src/loginMethods');
+const express = require('express'),
+  partials = require('express-partials'),
+  passportConfig = require('./src/passport'),
+  routes = require('./src/routes'),
+  loginMethods = require('./src/loginMethods'),
+  parser = require('body-parser'),
+  cookieParser = require('cookie-parser'),
+  expressSession = require('express-session');
 
-// Create a new Express application.
+// Create a new Express app
 var app = express();
 
-
-// Configure view engine to render EJS templates.
+// Configure view engine to render EJS templates
 app.set('views', __dirname + '/src/views');
 app.set('view engine', 'ejs');
 app.use(partials());
 
-app.use(require('cookie-parser')());
-app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+// Configure parsers and session manangement
+app.use(cookieParser());
+app.use(parser.urlencoded({ extended: true }));
+app.use(expressSession({ secret: process.env['SESSION_SECRET'] || 'keyboard cat', resave: true, saveUninitialized: true }));
 
+// Initialize passport strategies by loginMethods
 passportConfig(app, loginMethods);
 
+// Add basic auth routes
 routes(app);
 
-app.listen(process.env['PORT'] || 3001, (...args) => {
-  console.log('App is listening', args)
+app.listen(process.env['PORT'] || 3001, () => {
+  console.log('App is listening in port:', process.env['PORT'] || 3001);
 });
