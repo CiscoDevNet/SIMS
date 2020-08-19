@@ -34,7 +34,7 @@ exports.basicGuestUser = (
   username,
   firstName,
   lastName,
-  email,
+  emailAddress,
   customFields = {}
 ) => {
   return {
@@ -52,7 +52,7 @@ exports.basicGuestUser = (
             password: `${Math.floor(Math.random() * (9999 - 1000)) + 1000}`,
             firstName,
             lastName,
-            email,
+            emailAddress,
             userName: username,
             enabled: true,
           }
