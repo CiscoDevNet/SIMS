@@ -2,12 +2,15 @@ const passport = require('passport');
 
 
 module.exports = (app, strategies) => {
-  const applicationAddress = `${process.env['PROTOCOL']}://${process.env['CALLBACK_HOSTNAME']}:${process.env['PORT']}`;
+  const envPort = process.env['PORT'];
+  const port = envPort && (envPort == 443 || envPort == 80) ? '' : `:${process.env['PORT']}`;
+  const applicationAddress = `${process.env['PROTOCOL']}://${process.env['CALLBACK_HOSTNAME']}${port}`;
   strategies.forEach((strategy) => {
+    const cb = strategy.authCallback || ((accessToken, refreshToken, profile, done) => done(null, profile));
     passport.use(new strategy.strategyInstance({
       ...strategy.config,
       callbackURL: `${applicationAddress}/auth/${strategy.id}/callback`
-    }, (accessToken, refreshToken, profile, done) => done(null, profile)));
+    }, cb));
   });
   passport.serializeUser((user, done) => done(null, user));
   passport.deserializeUser((user, done) => done(null, user));

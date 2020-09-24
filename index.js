@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 const express = require('express'),
+  https = require('https'),
+  fs = require('fs'),
   partials = require('express-partials'),
   passportConfig = require('./src/passport'),
   routes = require('./src/routes'),
@@ -8,6 +10,8 @@ const express = require('express'),
   parser = require('body-parser'),
   cookieParser = require('cookie-parser'),
   expressSession = require('express-session');
+
+require('https').globalAgent.options.rejectUnauthorized = false;
 
 // Create a new Express app
 var app = express();
@@ -28,6 +32,9 @@ passportConfig(app, loginMethods);
 // Add basic auth routes
 routes(app);
 
-app.listen(process.env['PORT'] || 3001, () => {
+https.createServer({
+  key: fs.readFileSync("server.key"),
+  cert: fs.readFileSync("server.cert")
+}, app).listen(process.env['PORT'] || 3001, () => {
   console.log('App is listening in port:', process.env['PORT'] || 3001);
 });

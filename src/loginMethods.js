@@ -1,10 +1,26 @@
+const path = require('path');
+const fs = require('fs');
 const GitHubStrategy = require('passport-github').Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
+const AppleStrategy = require('@nicokaiser/passport-apple');
 const { basicGuestUser } = require('./ISEActions');
 
 module.exports = [{
+  id: 'apple',
+  strategyInstance: AppleStrategy,
+  config: {
+    key: fs.readFileSync(path.join(__dirname, process.env['APPLE_KEY_PATH'])), // Private key, downloaded from https://developer.apple.com/account/resources/authkeys/list
+    scope: ['name', 'email'],
+    clientID: process.env['APPLE_CLIENT_ID'],
+    teamID: process.env['APPLE_TEAM_ID'],
+    keyID: process.env['APPLE_KEY_ID'],
+  },
+  serializeFunction: (userJson) => {
+    return basicGuestUser(`apple_${userJson.id.split('.').join('')}`, null, null, userJson.email);
+  }
+}, {
   id: 'github',
   strategyInstance: GitHubStrategy,
   config: {
